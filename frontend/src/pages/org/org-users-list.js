@@ -43,6 +43,13 @@ class OrgUsersList extends React.Component {
     });               
   } 
 
+  handleSubmit = (email, name, password1, password2) => {
+    seafileAPI.addOrgUser(orgID, email, name, password1, password2).then(res => {
+      this.setState({
+        isShowAddOrgUserDialog: !this.state.isShowAddOrgUserDialog
+      }); 
+    });
+  } 
 
   render() {
     let orgUsers = this.state.orgUsers;
@@ -72,7 +79,9 @@ class OrgUsersList extends React.Component {
          </table>
           {this.props.isShowAddOrgUserDialog && (
             <ModalPortal>
-                 <AddOrgUserDialog toggle={this.props.toggleAddOrgUser} />
+              <AddOrgUserDialog toggle={this.props.toggleAddOrgUser}
+                                handleSubmit={this.handleSubmit}
+              />
             </ModalPortal>
           )}
        </div>
