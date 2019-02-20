@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
-import CodeMirror from 'react-codemirror';
+// import CodeMirror from 'react-codemirror';
+import CodeMirror from './utils/code-mirror';
 import moment from 'moment';
 import watermark from 'watermark-dom';
 import { ButtonGroup, Tooltip } from 'reactstrap';
@@ -10,7 +11,8 @@ import { Utils } from './utils/utils';
 import { serviceURL, gettext, mediaUrl } from './utils/constants';
 import InternalLinkDialog from './components/dialog/internal-link-dialog';
 import CommentsList from './components/comments-list';
-import 'codemirror/lib/codemirror.css';
+// import 'codemirror/lib/codemirror.css';
+import './css/codemirror.css';
 import './assets/css/fa-solid.css';
 import './assets/css/fa-regular.css';
 import './assets/css/fontawesome.css';
@@ -28,7 +30,7 @@ import 'codemirror/mode/htmlmixed/htmlmixed';
 
 const { isPro, repoID, repoName, filePath, fileName, siteName, enableWatermark, encoding, fileEncodingList, fileExt, isLocked, fileContent, latestContributor, lastModified, isStarred, err } = window.app.pageOptions;
 const options = {
-  lineNumbers: false,
+  lineNumbers: true,
   mode: Utils.chooseLanguage(fileExt.slice(3, fileExt.length -3)),
   extraKeys: {'Ctrl': 'autocomplete'},
   theme: 'default',
